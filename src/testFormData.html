@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="form1">
+        <input type="text" name="inp1" placeholder="Nome">
+        <input type="text" name="inp2" placeholder="Email">
+        <input type="checkbox" name="inp3" value="checkbox1">
+        <select name="select1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+        <button type="submit">Invia Form</button>
+    </form>
+
+    <script>
+        document.forms["form1"].addEventListener("submit", async(e) => {
+            e.preventDefault();
+            const formDataObj = new FormData(e.target);
+          const risposta = await fetch("http://localhost:5500/testFormData", {
+                method: "POST",
+                body: formDataObj
+            })
+        });
+    </script>
+</body>
+</html>
